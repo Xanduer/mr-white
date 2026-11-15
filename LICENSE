@@ -1,0 +1,19 @@
+Copyright (c) 2026 Alexander Santos. All rights reserved.
+
+MR. WHITE (the "Software"), including its source code, text, design and documentation,
+is proprietary and is the original work of the copyright holder named above.
+
+No licence or permission is granted to copy, modify, merge, publish, distribute,
+sublicense, sell, host, or otherwise reuse the Software or any substantial part of it,
+or to present it as your own work, without prior written permission from the
+copyright holder.
+
+Players may use the hosted game for its intended purpose: playing the game.
+
+Third-party libraries used by the Software (for example Express, Socket.IO, mysql2
+and dotenv) remain under their own licences.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE COPYRIGHT HOLDER BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY ARISING FROM THE USE OF THE SOFTWARE.

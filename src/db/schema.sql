@@ -1,0 +1,46 @@
+CREATE TABLE IF NOT EXISTS games (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  room_code VARCHAR(8) NOT NULL,
+  category VARCHAR(64) NOT NULL,
+  secret_word VARCHAR(64) NOT NULL,
+  player_count INT NOT NULL,
+  mr_white_count INT NOT NULL,
+  winner ENUM('civilians','mrwhite') NULL,
+  started_at DATETIME NOT NULL,
+  ended_at DATETIME NULL,
+  INDEX idx_room (room_code)
+);
+CREATE TABLE IF NOT EXISTS game_players (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  game_id INT UNSIGNED NOT NULL,
+  display_name VARCHAR(32) NOT NULL,
+  role ENUM('civilian','mrwhite') NOT NULL,
+  eliminated TINYINT(1) NOT NULL DEFAULT 0,
+  FOREIGN KEY (game_id) REFERENCES games(id) ON DELETE CASCADE
+);
+CREATE TABLE IF NOT EXISTS game_words (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  game_id INT UNSIGNED NOT NULL,
+  round_no TINYINT NOT NULL,
+  display_name VARCHAR(32) NOT NULL,
+  word VARCHAR(64) NOT NULL,
+  FOREIGN KEY (game_id) REFERENCES games(id) ON DELETE CASCADE
+);
+CREATE TABLE IF NOT EXISTS game_votes (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  game_id INT UNSIGNED NOT NULL,
+  vote_round TINYINT NOT NULL,
+  voter_name VARCHAR(32) NOT NULL,
+  target_name VARCHAR(32) NOT NULL,
+  FOREIGN KEY (game_id) REFERENCES games(id) ON DELETE CASCADE
+);
+CREATE TABLE IF NOT EXISTS game_typing_results (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  game_id INT UNSIGNED NOT NULL,
+  display_name VARCHAR(32) NOT NULL,
+  challenge_no TINYINT NOT NULL,
+  wpm DECIMAL(6,1) NOT NULL,
+  accuracy DECIMAL(5,1) NOT NULL,
+  errors INT NOT NULL,
+  FOREIGN KEY (game_id) REFERENCES games(id) ON DELETE CASCADE
+);
